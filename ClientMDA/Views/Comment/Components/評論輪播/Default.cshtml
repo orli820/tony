@@ -1,0 +1,40 @@
+﻿@model List<ClientMDA.ViewModels.CCommentViewModel>
+@{
+    ViewData["Title"] = "Default"; @*評論輪播*@
+}
+
+@{
+
+    @foreach (var item in Model)
+    {
+        <div class="hero__items set-bg" data-setbg="https://im.marieclaire.com.tw/m800c533h100b0/assets/mc/202205/628C963D8F7801653380669.jpeg">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="hero__text">
+                        <div class="label">
+                            <span class="mem_info">
+                                <span style="color:white">
+                                    <img class="memImg" src="~/images/Comment/mem01.png" alt="">
+                                    <a href="@Url.Action("會員評論","Comment", new {id= item.會員編號memberId})" style="font-weight:700;font-size:18px"> @item.暱稱nickName</a> - @item.發佈時間commentTime
+                                </span>
+                            </span>
+                        </div>
+                        <h3>@item.評論標題commentTitle</h3><hr />
+                        <p class="mComment-text">
+                            @item.評論內容comments
+                        </p>
+
+                        <a href="@Url.Action("電影評論", "Comment", new { id = item.評論編號commentId})" role="button" class="btn btn-comment">
+                            @*  href="#" *@
+                            <span>看評論</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+}
+
+<script>
+</script>

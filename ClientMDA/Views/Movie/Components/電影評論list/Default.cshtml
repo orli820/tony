@@ -1,0 +1,54 @@
+﻿@model List<ClientMDA.ViewModels.CCommentViewModel>
+@{
+    ViewData["Title"] = "Default"; @*電影評論list*@
+}
+
+@{
+    <div class="col-lg-8 col-md-8">
+        <!-- #region 電影評論 -->
+        <div class="anime__details__review">
+            <div class="section-title">
+                <h5>電影評論</h5>
+            </div>
+
+            @for (var i = 0; i < Model.Count; i++)
+            {
+
+
+                <div class="anime__review__item">
+                    <div class="anime__review__item__pic">
+                        <img src="~/images/Comment/mem01.png" alt="">
+                    </div>
+                    <div class="anime__review__item__text">
+                        <h6>
+                            <a href="@Url.Action("會員評論","Comment", new {id= Model[i].會員編號memberId})">@Model[i].暱稱nickName - </a>
+                            <span>@Html.DisplayFor(modelItem => Model[i].發佈時間commentTime)</span>
+                            <span class="mem_rate" style="color: #ffc107;">
+                                <i class="fa fa-star"></i> @Model[i].評分rate 分
+                            </span>
+                        </h6>
+                        <h5>@Model[i].評論標題commentTitle</h5><br />
+                        <p class="mComment-text">@Model[i].評論內容comments</p>
+                        <a href="@Url.Action("電影評論", "Comment", new { id = Model[i].評論編號commentId})"><span class="see-more">詳全文 >></span></a>
+                    </div>
+                </div>
+            }
+
+        </div>
+        <!-- #endregion 電影資訊 -->
+        <!-- #region 你的評論 -->
+        <div class="anime__details__form">
+            <div class="section-title">
+                <h5>你的評論</h5>
+            </div>
+            <form action="#">
+                <textarea placeholder="Your Comment" class="txtarea"></textarea><br />
+                <button type="submit"><i class="fa fa-location-arrow"></i>送出</button>
+            </form>
+        </div>
+        <!-- #endregion 你的評論 -->
+    </div>
+}
+<script>
+
+</script>
